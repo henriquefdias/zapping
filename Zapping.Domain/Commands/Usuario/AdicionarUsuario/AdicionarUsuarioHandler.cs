@@ -9,10 +9,12 @@ namespace Zapping.Domain.Commands.Usuario.AdicionarUsuario
 {
     public class AdicionarUsuarioHandler : Notifiable, IRequestHandler<AdicionarUsuarioRequest, Response>
     {
+        private readonly IMediator _mediator;
         private readonly IRepositoryUsuario _repositoryUsuario;
 
-        public AdicionarUsuarioHandler(IRepositoryUsuario repositoryUsuario)
+        public AdicionarUsuarioHandler(IMediator mediator, IRepositoryUsuario repositoryUsuario)
         {
+            _mediator = mediator;
             _repositoryUsuario = repositoryUsuario;
         }
 
@@ -32,14 +34,24 @@ namespace Zapping.Domain.Commands.Usuario.AdicionarUsuario
                 return new Response(this);
             }
 
-            Entities.Usuario usuario = new Entities.Usuario();
+            Entities.Usuario usuario = new Entities.Usuario(request.PrimeiroNome, request.UltimoNome, request.Email, request.Senha);
+            AddNotifications(usuario);
 
-            usuario.PrimeiroNome = request.PrimeiroNome;
-            usuario.UltimoNome = request.UltimoNome;
-            usuario.Email = request.Email;
-            usuario.Senha = request.Senha;
+            if (IsInvalid())
+            {
+                return new Response(this);
+            }
 
-            _repositoryUsuario.Adicionar(usuario);
+            usuario = _repositoryUsuario.Adicionar(usuario);
+
+            // Criar objeto de resposta
+            var response = new Response(this, usuario);
+
+            AdicionarUsuarioNotification adicionarUsuarioNotification = new AdicionarUsuarioNotification(usuario);
+
+            await _mediator.Publish(adicionarUsuarioNotification);
+
+            return await Task.FromResult(response);
         }
     }
 }
