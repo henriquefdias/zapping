@@ -10,6 +10,9 @@ using System.Reflection;
 using Zapping.Api.Security;
 using Zapping.Domain.Commands.Usuario.AdicionarUsuario;
 using Zapping.Domain.Interfaces.Repositories;
+using Zapping.Infra.Repositories;
+using Zapping.Infra.Repositories.Base;
+using Zapping.Infra.Repositories.Transactions;
 
 namespace Zapping.Api
 {
@@ -107,11 +110,11 @@ namespace Zapping.Api
 
         public static void ConfigureRepositories(this IServiceCollection services)
         {
-            /*
+            
             services.AddScoped<ZappingContext, ZappingContext>();
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            */
+            
             services.AddTransient<IRepositoryUsuario, RepositoryUsuario>();
             //services.AddTransient<IRepositoryGrupo, RespositoryGrupo>();
         }
@@ -136,5 +139,4 @@ namespace Zapping.Api
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
     }
-}
 }

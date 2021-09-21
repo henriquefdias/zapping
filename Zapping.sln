@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zapping.Domain", "Zapping.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zapping.Api", "Zapping.Api\Zapping.Api.csproj", "{D67027C0-E70F-4A71-A1DF-51E0AA6D30EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zapping.Infra", "Zapping.Infra\Zapping.Infra.csproj", "{B5BBC260-7598-4978-BAA4-EBBA0A89E31E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D67027C0-E70F-4A71-A1DF-51E0AA6D30EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D67027C0-E70F-4A71-A1DF-51E0AA6D30EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D67027C0-E70F-4A71-A1DF-51E0AA6D30EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BBC260-7598-4978-BAA4-EBBA0A89E31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BBC260-7598-4978-BAA4-EBBA0A89E31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BBC260-7598-4978-BAA4-EBBA0A89E31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BBC260-7598-4978-BAA4-EBBA0A89E31E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

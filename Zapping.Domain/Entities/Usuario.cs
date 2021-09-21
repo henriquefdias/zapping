@@ -7,6 +7,10 @@ namespace Zapping.Domain.Entities
 {
     public class Usuario : EntityBase
     {
+        protected Usuario()
+        {
+        }
+
         public Usuario(string primeiroNome, string ultimoNome, string email, string senha)
         {
             PrimeiroNome = primeiroNome;
